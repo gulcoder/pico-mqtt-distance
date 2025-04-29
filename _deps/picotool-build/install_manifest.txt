@@ -1,5 +1,0 @@
-/home/gulbaran/wifi/_deps/picotool/picotool
-/home/gulbaran/wifi/_deps/picotool/picotoolTargets.cmake
-/home/gulbaran/wifi/_deps/picotool/picotoolTargets-release.cmake
-/home/gulbaran/wifi/_deps/picotool/picotoolConfig.cmake
-/home/gulbaran/wifi/_deps/picotool/picotoolConfigVersion.cmake
