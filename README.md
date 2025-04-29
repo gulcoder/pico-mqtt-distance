@@ -25,8 +25,7 @@ Detta projekt bygger på tidigare repo och skickar avståndsmätningar från en 
 - Raspberry Pi Pico W
 - Raspberry Pi Zero W med Raspberry Pi OS
 - HC-SR04 ultraljudssensor
-- LCD 16x2 (via I2C)
-- Buzzer, LED
+
 
 ---
 
