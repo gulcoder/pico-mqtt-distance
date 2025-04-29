@@ -1,6 +1,6 @@
 # 📡 Pico W + MQTT + Ultraljudsprojekt
 
-Detta projekt skickar avståndsmätningar från en Raspberry Pi Pico W till en Raspberry Pi Zero W via MQTT. Zero W agerar som MQTT-broker och visar inkommande avståndsvärden i realtid.
+Detta projekt bygger på tidigare repo och skickar avståndsmätningar från en Raspberry Pi Pico W till en Raspberry Pi Zero W via MQTT. Zero W agerar som MQTT-broker och visar inkommande avståndsvärden i realtid.
 
 ---
 
