@@ -13,7 +13,7 @@ if (EXISTS ${picoVscode})
 endif()
 # ====================================================================================
 cmake_minimum_required(VERSION 3.13)
-
+add_compile_definitions(LWIP_MQTT=1)
 # Must set these FIRST
 set(PICO_BOARD pico_w)
 set(PICO_CYW43_ARCH "pico_cyw43_arch_lwip_threadsafe_background")
@@ -23,20 +23,30 @@ set(__USE_PICO_STATIC_ASSERT 1)
 set(PICO_CYW43_ARCH_LWIP 1)
 set(PICO_CYW43_ARCH_ENABLE_BT 1)  # Only if you need Bluetooth
 
-include(pico_sdk_import.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/pico-sdk/external/pico_sdk_import.cmake)
 project(wifi C CXX ASM)
 
+set(__USE_PICO_STATIC_ASSERT 1)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
 set(PICOTOOL_FORCE_FETCH_FROM_GIT OFF)
 set(PICO_TOOLCHAIN_PROGRAMMING_VERSION 2.1.1)
 
+pico_sdk_init()
+
+add_compile_definitions(
+    LWIP_MQTT=1
+    LWIP_TCP=1
+    LWIP_IPV4=1
+)
+
+
+add_subdirectory(pico-sdk pico-sdk-build)
+
 # Copy firmware files to build directory
 file(COPY ${PICO_SDK_PATH}/lib/cyw43-driver/firmware/
      DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/firmware)
-
-pico_sdk_init()
 
 add_executable(wifi
  src/main.c
@@ -75,8 +85,11 @@ target_include_directories(wifi PRIVATE
     ${PICO_SDK_PATH}/lib/cyw43-driver/src
     ${PICO_SDK_PATH}/lib/cyw43-driver/include
     ${PICO_SDK_PATH}/lib/lwip/src/include
+    ${PICO_SDK_PATH}/lib/lwip/src/include/lwip
     ${PICO_SDK_PATH}/lib/lwip/contrib/ports/rp2040/include
     ${PICO_SDK_PATH}/src/rp2_common/pico_cyw43_driver
+    ${PICO_SDK_PATH}/src/rp2_common/pico_cyw43_arch/include/pico
+    ${PICO_SDK_PATH}/src/rp2_common/pico_cyw43_driver/include
     ${PICO_SDK_PATH}/src/common/pico_stdlib/include
     #${PICO_SDK_PATH}/src/common/pico_base/include
     #${PICO_SDK_PATH}/src/common/pico_time/include
@@ -127,6 +140,7 @@ target_link_libraries(wifi PRIVATE
     hardware_dma
     hardware_irq
     pico_time
+    pico_lwip_mqtt
 )
 
 pico_enable_stdio_usb(wifi 1)

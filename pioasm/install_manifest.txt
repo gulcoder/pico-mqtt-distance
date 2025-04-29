@@ -1,0 +1,5 @@
+/home/gulbaran/wifi/pioasm-install/pioasm/pioasm
+/home/gulbaran/wifi/pioasm-install/pioasm/pioasmTargets.cmake
+/home/gulbaran/wifi/pioasm-install/pioasm/pioasmTargets-release.cmake
+/home/gulbaran/wifi/pioasm-install/pioasm/pioasmConfig.cmake
+/home/gulbaran/wifi/pioasm-install/pioasm/pioasmConfigVersion.cmake
