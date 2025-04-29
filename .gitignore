@@ -4,6 +4,13 @@ build/
 *.elf
 *.bin
 *.map
+/cmake-build-debug/
+/cmake-build-release/
+/CMakeFiles/
+/Makefile
+/CMakeLists.txt.user
+/.pio/
+
 
 # VSCode
 .vscode/
@@ -20,3 +27,9 @@ Makefile
 .vscode/
 .idea/
 
+/pico-sdk/
+/_pio/
+
+*.swp
+*.bak
+*~
